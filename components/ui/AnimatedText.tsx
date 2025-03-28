@@ -53,7 +53,7 @@ const AnimatedText = ({ words, interval = 3000, className = "" }: AnimatedTextPr
   }, [words.length, interval]);
 
   return (
-    <div 
+    <span 
       ref={containerRef} 
       className={`inline-block ${className}`} 
       style={{ width: containerWidth ? `${containerWidth}px` : 'auto', display: 'inline-block' }}
@@ -71,7 +71,7 @@ const AnimatedText = ({ words, interval = 3000, className = "" }: AnimatedTextPr
           {words[currentIndex]}
         </motion.span>
       </AnimatePresence>
-    </div>
+    </span>
   );
 };
 
