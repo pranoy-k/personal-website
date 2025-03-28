@@ -13,6 +13,7 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import ExperienceCard from "@/components/ui/ExperienceCard";
 import ProjectCard from "@/components/ui/ProjectCard";
 import EducationCard from "@/components/ui/EducationCard";
+import AnimatedText from "@/components/ui/AnimatedText";
 
 export default function Home() {
   // Create placeholder images directory
@@ -48,13 +49,13 @@ export default function Home() {
                 </h1>
                 
                 <p className="text-xl text-slate-600 mb-6">
-                  Software Engineer | Tech Innovator
+                  Problem Solver | Tech Innovator
                 </p>
                 
                 <p className="text-slate-700 mb-8 max-w-xl">
-                  I&apos;m a passionate software engineer with expertise in building innovative 
-                  technology solutions. My goal is to create impactful software that 
-                  solves real-world problems.
+                  I&apos;m Pranoy — a <AnimatedText words={["builder", "problem solver"]} interval={3000} className="text-blue-600 font-semibold" /> at heart, endlessly curious about how technology can uplift humanity.
+                  Whether it&apos;s through AI that understands us better or systems that make our planet healthier,
+                  I&apos;m driven by solutions that don&apos;t just solve problems today but spark brighter possibilities for tomorrow.
                 </p>
                 
                 <h2 className="text-2xl font-semibold mb-4 text-slate-800">Primary interests:</h2>
