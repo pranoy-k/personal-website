@@ -25,62 +25,86 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-slate-900 text-white overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-slate-900/90 z-10"></div>
-          <div className="absolute inset-0 bg-[url('/images/ai-background.jpg')] bg-cover bg-center opacity-30 z-0"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center md:text-left"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Pranoy Kovuri
-              </h1>
-              <h2 className="text-xl md:text-2xl text-slate-300 mb-6">
-                Area Tech Lead Software Engineer at Google
-              </h2>
-              <p className="text-lg md:text-xl mb-8 max-w-2xl">
-                A technical/product leader with over a decade of experience in leading and developing 
-                cutting-edge AI and ML solutions for content safety and health.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <Link 
-                  href="#about" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition-colors"
-                >
-                  Learn More
-                </Link>
-                <Link 
-                  href="#contact" 
-                  className="bg-transparent hover:bg-white/10 border border-white text-white px-6 py-3 rounded-md font-medium transition-colors"
-                >
-                  Get in Touch
-                </Link>
+      <section className="relative min-h-screen flex items-center py-20 bg-white text-slate-900">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="bg-transparent p-8 fade-in">
+            <div className="flex flex-col md:flex-row gap-12">
+              <div className="md:w-1/3 flex justify-center md:justify-start">
+                <div className="w-56 h-56 lg:w-64 lg:h-64">
+                  <Image 
+                    src="/images/profile.jpg" 
+                    alt="Pranoy Kovuri" 
+                    width={260}
+                    height={260}
+                    className="object-cover rounded-md shadow-md"
+                    priority
+                  />
+                </div>
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="hidden md:flex justify-center md:justify-end"
-            >
-              <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white/20">
-                <Image 
-                  src="/images/profile.jpg" 
-                  alt="Pranoy Kovuri" 
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              
+              <div className="md:w-2/3 flex flex-col">
+                <h1 className="text-4xl md:text-5xl font-bold mb-2 text-slate-900">
+                  Hello <span className="wave-emoji">👋</span>
+                </h1>
+                
+                <p className="text-xl text-slate-600 mb-6">
+                  Software Engineer | Tech Innovator
+                </p>
+                
+                <p className="text-slate-700 mb-8 max-w-xl">
+                  I&apos;m a passionate software engineer with expertise in building innovative 
+                  technology solutions. My goal is to create impactful software that 
+                  solves real-world problems.
+                </p>
+                
+                <h2 className="text-2xl font-semibold mb-4 text-slate-800">Primary interests:</h2>
+                
+                <ul className="mb-8 space-y-2 text-slate-700 max-w-xl">
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Building scalable web applications with modern technologies</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Exploring machine learning and AI applications</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Creating intuitive user interfaces and experiences</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Open source contributions and community engagement</span>
+                  </li>
+                </ul>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-blue-50 p-4 rounded-md border border-blue-100">
+                    <h3 className="text-lg font-semibold mb-1 text-slate-800">Education</h3>
+                    <p className="text-slate-600">Computer Science Degree</p>
+                  </div>
+                  <div className="bg-blue-50 p-4 rounded-md border border-blue-100">
+                    <h3 className="text-lg font-semibold mb-1 text-slate-800">Location</h3>
+                    <p className="text-slate-600">Silicon Valley, CA</p>
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap gap-4">
+                  <Link 
+                    href="#contact" 
+                    className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition"
+                  >
+                    Get In Touch
+                  </Link>
+                  <Link 
+                    href="#" 
+                    className="px-8 py-3 rounded-md border border-blue-600 text-blue-600 hover:bg-blue-100 transition"
+                  >
+                    Download CV
+                  </Link>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
         
@@ -90,7 +114,7 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
-          <Link href="#about" className="flex flex-col items-center text-white/70 hover:text-white transition-colors">
+          <Link href="#about" className="flex flex-col items-center text-slate-500 hover:text-slate-700 transition-colors">
             <span className="text-sm mb-2">Scroll Down</span>
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
@@ -492,7 +516,7 @@ export default function Home() {
                   viewBox="0 0 24 24" 
                   fill="currentColor"
                 >
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5z"/>
                 </svg>
               </a>
               <a 
@@ -514,7 +538,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-6 text-center text-slate-400 text-sm">
-            <p>© {new Date().getFullYear()} Pranoy Kovuri. All rights reserved.</p>
+            <p> 2024 Pranoy Kovuri. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -42,10 +42,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 py-4 transition-all duration-300 ${scrolled ? 'bg-slate-900/95 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 py-4 transition-all duration-300 ${scrolled ? 'bg-slate-800/95 backdrop-blur-sm shadow-md' : 'bg-white shadow-sm'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-white">
+          <Link href="/" className={`text-2xl font-bold ${scrolled ? 'text-white' : 'text-slate-800'}`}>
             Pranoy Kovuri
           </Link>
 
@@ -55,7 +55,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 href={item.href}
-                className="text-slate-300 hover:text-white transition-colors"
+                className={`font-medium ${scrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-blue-600'} transition-colors`}
               >
                 {item.name}
               </Link>
@@ -64,7 +64,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white focus:outline-none"
+            className={`md:hidden ${scrolled ? 'text-white' : 'text-slate-800'} focus:outline-none`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -85,7 +85,7 @@ const Navbar = () => {
               <Link
                 key={index}
                 href={item.href}
-                className="text-slate-300 hover:text-white transition-colors"
+                className={`font-medium ${scrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-blue-600'} transition-colors`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
