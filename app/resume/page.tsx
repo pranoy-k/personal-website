@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { ArrowDownToLine } from "lucide-react";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Image from "next/image";
 
 export default function Resume() {
   const [mounted, setMounted] = useState(false);
