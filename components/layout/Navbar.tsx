@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeItem, setActiveItem] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +45,15 @@ const Navbar = () => {
     { name: "Resume", href: "/resume" }
   ];
 
+  // Set active item based on pathname
+  useEffect(() => {
+    if (pathname === "/") {
+      setActiveItem("Home");
+    } else if (pathname === "/resume") {
+      setActiveItem("Resume");
+    }
+  }, [pathname]);
+
   return (
     <nav className={`fixed w-full z-50 py-4 transition-all duration-300 ${scrolled ? 'bg-slate-800/95 backdrop-blur-sm shadow-md' : 'bg-white shadow-sm'}`}>
       <div className="container mx-auto px-4 md:px-6">
@@ -53,13 +65,33 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item, index) => (
-              <Link
+              <div
                 key={index}
-                href={item.href}
-                className={`font-medium ${scrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-blue-600'} transition-colors`}
+                className="relative"
+                onMouseEnter={() => setActiveItem(item.name)}
+                onMouseLeave={() => setActiveItem(pathname === "/" ? "Home" : 
+                                                 pathname === "/resume" ? "Resume" : null)}
               >
-                {item.name}
-              </Link>
+                <Link
+                  href={item.href}
+                  className={`font-medium ${scrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-blue-600'} transition-colors relative py-2`}
+                >
+                  {item.name}
+                  {activeItem === item.name && (
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-500"
+                      layoutId="navbar-underline"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 500, 
+                        damping: 30 
+                      }}
+                    />
+                  )}
+                </Link>
+              </div>
             ))}
           </div>
 
@@ -83,14 +115,31 @@ const Navbar = () => {
         >
           <div className="flex flex-col space-y-4 py-4">
             {navItems.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className={`font-medium ${scrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-blue-600'} transition-colors`}
+              <div 
+                key={index} 
+                className="relative"
                 onClick={() => setIsOpen(false)}
               >
-                {item.name}
-              </Link>
+                <Link
+                  href={item.href}
+                  className={`font-medium ${scrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-blue-600'} transition-colors relative py-2 block`}
+                >
+                  {item.name}
+                  {activeItem === item.name && (
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-500"
+                      layoutId="mobile-navbar-underline"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 500, 
+                        damping: 30 
+                      }}
+                    />
+                  )}
+                </Link>
+              </div>
             ))}
           </div>
         </motion.div>

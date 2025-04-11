@@ -7,6 +7,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
+# Preferred method - use Turbopack for faster development:
+npx next dev --turbopack
+
+# Alternative methods:
 npm run dev
 # or
 yarn dev
