@@ -27,11 +27,12 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center py-20 bg-white text-slate-900">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <div className="bg-transparent p-8 fade-in">
-            <div className="flex flex-col md:flex-row gap-12">
-              <div className="md:w-1/3 flex justify-center md:justify-start">
-                <div className="w-56 h-56 lg:w-64 lg:h-64">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="bg-transparent p-2 sm:p-8 fade-in">
+            <div className="flex flex-col items-center md:flex-row md:items-start gap-8 md:gap-12">
+              {/* Profile Image - Full width on mobile */}
+              <div className="w-full flex justify-center md:w-1/3 md:justify-start mb-8 md:mb-0">
+                <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64">
                   <Image 
                     src="/images/profile.jpg" 
                     alt="Pranoy Kovuri" 
@@ -43,24 +44,25 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="md:w-2/3 flex flex-col">
-                <h1 className="text-4xl md:text-5xl font-bold mb-2 text-slate-900">
+              {/* Text Content - Full width on mobile */}
+              <div className="w-full text-center md:text-left md:w-2/3 flex flex-col">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 text-slate-900">
                   Hello <span className="wave-emoji">👋</span>
                 </h1>
                 
-                <p className="text-xl text-slate-600 mb-6">
+                <p className="text-lg sm:text-xl text-slate-600 mb-4 sm:mb-6">
                   Problem Solver | Tech Innovator
                 </p>
                 
-                <p className="text-slate-700 mb-8 max-w-xl">
+                <p className="text-sm sm:text-base text-slate-700 mb-6 sm:mb-8 max-w-xl mx-auto md:mx-0">
                   I&apos;m Pranoy — a <AnimatedText words={["builder", "problem solver"]} interval={3000} className="text-blue-600 font-semibold" /> at heart, endlessly curious about how technology can uplift humanity.
                   Whether it&apos;s through AI that understands us better or systems that make our planet healthier,
                   I&apos;m driven by solutions that don&apos;t just solve problems today but spark brighter possibilities for tomorrow.
                 </p>
                 
-                <h2 className="text-2xl font-semibold mb-4 text-slate-800">Primary interests:</h2>
+                <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-slate-800">Primary interests:</h2>
                 
-                <ul className="mb-8 space-y-2 text-slate-700 max-w-xl">
+                <ul className="mb-6 sm:mb-8 space-y-2 text-sm sm:text-base text-slate-700 max-w-xl mx-auto md:mx-0">
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
                     <span>Building scalable web applications with modern technologies</span>
@@ -79,27 +81,27 @@ export default function Home() {
                   </li>
                 </ul>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-blue-50 p-4 rounded-md border border-blue-100">
-                    <h3 className="text-lg font-semibold mb-1 text-slate-800">Education</h3>
-                    <p className="text-slate-600">Computer Science Degree</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8 max-w-xl mx-auto md:mx-0">
+                  <div className="bg-blue-50 p-3 sm:p-4 rounded-md border border-blue-100">
+                    <h3 className="text-base sm:text-lg font-semibold mb-1 text-slate-800">Education</h3>
+                    <p className="text-sm sm:text-base text-slate-600">Computer Science Degree</p>
                   </div>
-                  <div className="bg-blue-50 p-4 rounded-md border border-blue-100">
-                    <h3 className="text-lg font-semibold mb-1 text-slate-800">Location</h3>
-                    <p className="text-slate-600">Silicon Valley, CA</p>
+                  <div className="bg-blue-50 p-3 sm:p-4 rounded-md border border-blue-100">
+                    <h3 className="text-base sm:text-lg font-semibold mb-1 text-slate-800">Location</h3>
+                    <p className="text-sm sm:text-base text-slate-600">Silicon Valley, CA</p>
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4">
                   <Link 
                     href="#contact" 
-                    className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition"
+                    className="bg-blue-600 text-white px-5 sm:px-8 py-2 sm:py-3 rounded-md text-sm sm:text-base hover:bg-blue-700 transition"
                   >
                     Get In Touch
                   </Link>
                   <Link 
                     href="#" 
-                    className="px-8 py-3 rounded-md border border-blue-600 text-blue-600 hover:bg-blue-100 transition"
+                    className="px-5 sm:px-8 py-2 sm:py-3 rounded-md border border-blue-600 text-blue-600 text-sm sm:text-base hover:bg-blue-100 transition"
                   >
                     Download CV
                   </Link>
