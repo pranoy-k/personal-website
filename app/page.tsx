@@ -10,7 +10,6 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SkillBar from "@/components/ui/SkillBar";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import ExperienceCard from "@/components/ui/ExperienceCard";
 import ProjectCard from "@/components/ui/ProjectCard";
 import EducationCard from "@/components/ui/EducationCard";
 import AnimatedText from "@/components/ui/AnimatedText";

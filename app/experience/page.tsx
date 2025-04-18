@@ -30,7 +30,7 @@ export default function Experience() {
           >
             <SectionHeading title="Professional Experience" />
             <p className="text-slate-700 mt-4 max-w-2xl mx-auto">
-              My professional journey includes various roles where I've led teams, built cutting-edge AI solutions, 
+              My professional journey includes various roles where I&apos;ve led teams, built cutting-edge AI solutions, 
               and contributed to impactful projects across different organizations.
             </p>
           </motion.div>
