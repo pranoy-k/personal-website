@@ -319,7 +319,7 @@ export default function Home() {
                   </svg>
                   <div>
                     <h4 className="font-bold">Email</h4>
-                    <p className="text-slate-300">kovuri.pranoy@gmail.com</p>
+                    <p className="text-slate-300">kovuripranoy@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
