@@ -35,7 +35,7 @@ export default function Resume() {
             </p>
             
             <Link 
-              href="/documents/PranoyResume2024.pdf" 
+              href="/documents/PranoyResume2025.pdf" 
               target="_blank"
               className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-md transition-colors hover:bg-blue-700 mb-12"
             >
@@ -47,8 +47,8 @@ export default function Resume() {
           <div className="bg-white shadow-md rounded-lg overflow-hidden">
             <div className="aspect-[8.5/11] relative w-full">
               <iframe 
-                src="/documents/PranoyResume2024.pdf" 
-                className="w-full h-full" 
+                src="/documents/PranoyResume2025.pdf" 
+                className="w-full h-full"
                 style={{ minHeight: "800px" }}
               />
             </div>
