@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pranoy Kovuri | AI/ML Engineer",
+  title: "Pranverse",
   description:
     "Personal website of Pranoy Kovuri — AI/ML engineer and technical leader working on AI safety, machine learning, and NLP.",
 };
