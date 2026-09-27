@@ -10,7 +10,11 @@ The website always serves the current resume from `PranoyResume2026.pdf`
 
 ## Changelog
 
-### v4 — 2026-09-27 (current: `PranoyResume2026.pdf`)
+### v5 — 2026-09-27 (current: `PranoyResume2026.pdf`)
+- Removed "(Engineering DRI)" from the "Adversarial Robustness, Agentic
+  Planners" bullet heading
+
+### v4 — 2026-09-27 (`archive/PranoyResume2026_v4_2026-09-27.pdf`)
 - Removed the "Updated July 2026" header stamp
 - Split the single 2019–2024 Google block into three distinct roles with
   their own dates: Tech Lead (2024, Vertex AI Safety), Senior Software
