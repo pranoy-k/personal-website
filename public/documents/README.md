@@ -10,7 +10,29 @@ The website always serves the current resume from `PranoyResume2026.pdf`
 
 ## Changelog
 
-### v3 — 2026-07-20 (current: `PranoyResume2026.pdf`)
+### v4 — 2026-09-27 (current: `PranoyResume2026.pdf`)
+- Removed the "Updated July 2026" header stamp
+- Split the single 2019–2024 Google block into three distinct roles with
+  their own dates: Tech Lead (2024, Vertex AI Safety), Senior Software
+  Engineer (2021–2023, Bard/Gemini), Software Engineer (2019–2020, Text
+  Content Safety)
+- Added a new Apple bullet: Multimodal Post-Training (DRI) — extending the
+  on-device guardrail adapter to image+text, adversarial-robustness
+  preprocessing, teacher-student distillation, automated checkpoint selection
+- Added a new Apple bullet: Adversarial Robustness, Agentic Planners
+  (Engineering DRI) — closed-loop red-teaming harness for agentic planner
+  models
+- Added a new bullet under the 2019–2020 Google role: LLM-Powered Code
+  Deobfuscation (CASCADE) — the ICSE 2026 published research, with concrete
+  results (99.56% prelude detection, ~945 string literals/sample)
+- Reworked the Multimodal Autograder bullet (now 7 prompt architectures) and
+  reworded the Crisis-Response Classifier and AutoMUM precision figures
+- Removed the patent number from the summary line (kept in full under
+  Publications & Patents)
+- General formatting cleanup: consistent bullet markers, fixed ligature
+  rendering (fi/fl), normalized spacing around role separators
+
+### v3 — 2026-07-20 (`archive/PranoyResume2026_v3_2026-07-20.pdf`)
 - Stamped "Updated July 2026" on the header
 - US patent updated from application to granted: U.S. Patent No. 12,586,398 B2,
   "Detecting a Homoglyph in a String of Characters" (granted March 2026)
