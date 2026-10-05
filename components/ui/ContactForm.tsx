@@ -1,127 +1,167 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+
+const CONTACT_EMAIL = "kovuripranoy@gmail.com";
+
+const STARTERS = [
+  {
+    label: "Say hi 👋",
+    subject: "Hello from your website 👋",
+    message: "Hey Pranoy! Just stopping by to say hi. ",
+  },
+  {
+    label: "Let's build something 🛠️",
+    subject: "Let's build something together",
+    message: "Hey Pranoy! I've got an idea I think you'd enjoy: ",
+  },
+  {
+    label: "Coffee chat ☕",
+    subject: "Coffee chat?",
+    message: "Hey Pranoy! I'd love to pick your brain over coffee (virtual works too) about ",
+  },
+  {
+    label: "Opportunity 🚀",
+    subject: "An opportunity I'd like to discuss",
+    message: "Hey Pranoy! I came across your work and wanted to reach out about ",
+  },
+];
 
 interface ContactFormProps {
   className?: string;
 }
 
 const ContactForm = ({ className = "" }: ContactFormProps) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [name, setName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [launched, setLaunched] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const applyStarter = (starter: (typeof STARTERS)[number]) => {
+    setSubject(starter.subject);
+    const canReplace = !message.trim() || STARTERS.some((s) => s.message === message);
+    if (canReplace) setMessage(starter.message);
+    messageRef.current?.focus();
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const buildDraft = () => ({
+    subject: subject.trim() || "Hello from your website",
+    body: `${message.trim()}\n\n- ${name.trim() || "A friendly visitor"}`,
+  });
+
+  const openEmailApp = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    try {
-      // In a real application, you would send the form data to a server
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-    } catch {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus("idle"), 5000);
-    }
+    const { subject: s, body } = buildDraft();
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(s)}&body=${encodeURIComponent(body)}`;
+    setLaunched(true);
+  };
+
+  const openGmail = (form: HTMLFormElement | null) => {
+    if (form && !form.reportValidity()) return;
+    const { subject: s, body } = buildDraft();
+    const url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(s)}&body=${encodeURIComponent(body)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    setLaunched(true);
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard
+      .writeText(CONTACT_EMAIL)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      })
+      .catch(() => setCopied(false));
   };
 
   return (
     <div className={className}>
-      <h3 className="text-2xl font-bold mb-4">Send a Message</h3>
-      <form className="space-y-4" onSubmit={handleSubmit}>
+      <h3 className="text-2xl font-bold mb-1">Say hello</h3>
+      <p className="text-slate-300 text-sm mb-4">
+        Pick a starter or write your own. I&apos;ll open your email with it ready to send.
+      </p>
+
+      <div className="flex flex-wrap gap-2 mb-4">
+        {STARTERS.map((starter) => (
+          <button
+            key={starter.label}
+            type="button"
+            onClick={() => applyStarter(starter)}
+            className={`px-3 py-1 text-sm rounded-full border transition-colors ${
+              subject === starter.subject
+                ? "border-blue-400 bg-blue-600/30 text-white"
+                : "border-slate-600 bg-slate-700/50 text-slate-200 hover:border-blue-400 hover:bg-blue-600/20"
+            }`}
+          >
+            {starter.label}
+          </button>
+        ))}
+      </div>
+
+      <form className="space-y-4" onSubmit={openEmailApp}>
         <div>
-          <label htmlFor="name" className="block mb-2 font-medium">Name</label>
-          <input 
-            type="text" 
+          <label htmlFor="name" className="block mb-2 font-medium">
+            Your name <span className="text-slate-400 font-normal">(optional)</span>
+          </label>
+          <input
+            type="text"
             id="name"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Your Name"
-            required
-            disabled={isSubmitting}
-          />
-        </div>
-        <div>
-          <label htmlFor="email" className="block mb-2 font-medium">Email</label>
-          <input 
-            type="email" 
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Your Email"
-            required
-            disabled={isSubmitting}
+            placeholder="What should I call you?"
           />
         </div>
         <div>
           <label htmlFor="message" className="block mb-2 font-medium">Message</label>
-          <textarea 
+          <textarea
             id="message"
             name="message"
-            value={formData.message}
-            onChange={handleChange}
+            ref={messageRef}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             rows={5}
             className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Your Message"
+            placeholder="What's on your mind? A wild idea, a project, a job, or just a hello. I read every message."
             required
-            disabled={isSubmitting}
           ></textarea>
         </div>
-        <button 
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition-colors disabled:bg-blue-800 disabled:cursor-not-allowed"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <span className="flex items-center justify-center">
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Sending...
-            </span>
-          ) : "Send Message"}
-        </button>
-        
-        {submitStatus === "success" && (
-          <motion.div 
+
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            type="submit"
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition-colors"
+          >
+            Open in email app
+          </button>
+          <button
+            type="button"
+            onClick={(e) => openGmail(e.currentTarget.form)}
+            className="flex-1 border border-blue-400 text-blue-300 hover:bg-blue-600/20 px-6 py-3 rounded-md font-medium transition-colors"
+          >
+            Open in Gmail
+          </button>
+        </div>
+
+        {launched && (
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-3 bg-green-600/20 border border-green-600 text-green-200 rounded-md text-center"
+            className="p-3 bg-green-600/20 border border-green-600 text-green-200 rounded-md text-sm"
           >
-            Thank you! Your message has been sent successfully.
-          </motion.div>
-        )}
-        
-        {submitStatus === "error" && (
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-3 bg-red-600/20 border border-red-600 text-red-200 rounded-md text-center"
-          >
-            Oops! Something went wrong. Please try again later.
+            Your email draft should be opening now. Nothing popped up? Try the other button, or{" "}
+            <button
+              type="button"
+              onClick={copyEmail}
+              className="underline hover:text-white"
+            >
+              {copied ? "copied!" : "copy my address"}
+            </button>{" "}
+            and write from anywhere.
           </motion.div>
         )}
       </form>
