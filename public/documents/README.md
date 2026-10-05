@@ -10,7 +10,12 @@ The website always serves the current resume from `PranoyResume2026.pdf`
 
 ## Changelog
 
-### v5 — 2026-09-27 (current: `PranoyResume2026.pdf`)
+### v6 — 2026-10-05 (current: `PranoyResume2026.pdf`)
+- Removed email and phone number from the header to reduce exposure of
+  personal contact info on a public page; kept location and LinkedIn so
+  people can still reach out
+
+### v5 — 2026-09-27 (`archive/PranoyResume2026_v5_2026-09-27.pdf`)
 - Removed "(Engineering DRI)" from the "Adversarial Robustness, Agentic
   Planners" bullet heading
 
