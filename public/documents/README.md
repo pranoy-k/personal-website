@@ -10,7 +10,20 @@ The website always serves the current resume from `PranoyResume2026.pdf`
 
 ## Changelog
 
-### v6 — 2026-10-05 (current: `PranoyResume2026.pdf`)
+### v7 — 2026-10-15 (current: `PranoyResume2026.pdf`)
+- Replaced with `Pranoy_Kovuri_Resume_latest.pdf`. Its content is identical to
+  v3 (the July 2026 text), so this rolls back the content changes made in
+  v4–v6:
+  - Drops the Multimodal Post-Training (DRI), Adversarial Robustness / Agentic
+    Planners, and CASCADE bullets
+  - Google experience is one combined 2019–2024 block again (not three roles)
+  - Restores the "Updated July 2026" stamp and the patent number in the summary
+- Email and phone removed from the header (as in v6). Done by editing the PDF
+  directly: the header line was redrawn centered, with the same font, colors
+  and link targets
+- To restore the newer content, use v6 (`archive/PranoyResume2026_v6_2026-10-05.pdf`)
+
+### v6 — 2026-10-05 (`archive/PranoyResume2026_v6_2026-10-05.pdf`)
 - Removed email and phone number from the header to reduce exposure of
   personal contact info on a public page; kept location and LinkedIn so
   people can still reach out
